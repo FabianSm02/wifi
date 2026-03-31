@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -5,48 +6,72 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
-  <meta name="theme-color" content="#07111f" />
+  <meta name="theme-color" content="#070b17" />
   <title>Acceso WiFi</title>
   <meta name="description" content="Acceso a la red WiFi" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="bg-base"></div>
+  <div class="bg-noise"></div>
+  <div class="bg-grid"></div>
   <div class="bg-orb orb-1"></div>
   <div class="bg-orb orb-2"></div>
-  <div class="bg-grid"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="bg-beam beam-1"></div>
+  <div class="bg-beam beam-2"></div>
+  <div class="particles" aria-hidden="true"></div>
 
   <main class="page">
-    <section class="card reveal">
-      <div class="card-glow"></div>
+    <section class="wifi-card reveal" id="mainCard">
+      <div class="card-border-glow"></div>
+      <div class="card-spotlight"></div>
 
       <header class="hero">
-        <div class="hero-icon floating">📶</div>
+        <div class="hero-badge floating">📶</div>
+
         <div class="hero-copy">
           <span class="eyebrow">Bienvenido</span>
           <h1>Acceso a la red WiFi</h1>
           <p class="subtitle">
-            Escanea el código QR o utiliza los datos de acceso mostrados a continuación.
+            Escanea el código QR o copia los datos de acceso para conectarte fácilmente.
           </p>
         </div>
       </header>
 
       <section class="info-grid">
         <article class="info-box reveal delay-1">
-          <span class="label">Nombre de la red</span>
+          <div class="info-top">
+            <span class="label">Nombre de la red</span>
+            <span class="status-dot"></span>
+          </div>
+
           <div class="value-row">
             <strong class="value wifi-name" id="ssid">D&amp;F</strong>
-           <!-- <button class="mini-btn" onclick="copyText('ssid', 'Nombre de red copiado')">
-              Copiar
-            </button>-->
+            <!-- <button class="mini-btn" onclick="copyText('ssid', 'Nombre de red copiado')"> -->
+              <!-- <span>Copiar</span> -->
+            <!-- </button> -->
           </div>
         </article>
 
         <article class="info-box reveal delay-2">
-          <span class="label">Clave de acceso</span>
+          <div class="info-top">
+            <span class="label">Clave de acceso</span>
+            <span class="security-pill">WPA3</span>
+          </div>
+
           <div class="value-row">
             <strong class="value password" id="password">dayafabi23</strong>
             <button class="mini-btn" onclick="copyText('password', 'Clave copiada')">
-              Copiar
+              <span>Copiar</span>
             </button>
           </div>
         </article>
@@ -54,27 +79,36 @@
 
       <section class="qr-section reveal delay-3">
         <div class="qr-card pulse-soft">
-          <div class="qr-frame">
-            <img
-  src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=WIFI:T:WPA;S:D%26F;P:dayafabi23;;"
-  alt="Código QR para conectarse a la red WiFi"
-/>
+          <div class="qr-side">
+            <div class="qr-frame">
+              <div class="qr-scan"></div>
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=WIFI:T:WPA;S:D%26F;P:dayafabi23;;"
+                alt="Código QR para conectarse a la red WiFi"
+              />
+            </div>
           </div>
+
           <div class="qr-copy">
-            <h2>Escanear para conectar</h2>
-            <p>
-              Mantén presionado el código QR si tu dispositivo muestra la opción
-              <strong>Join Network</strong>.
-            </p>
-          </div>
+			  <h2>Escanea o mantén presionado para conectarte</h2>
+			  <p>
+				Utiliza la cámara de tu dispositivo para escanear el código QR o, si está disponible,
+				mantén presionado sobre el código y elige <strong>Join Network</strong> para unirte
+				a la red de forma inmediata.
+			  </p>
+			</div>
         </div>
       </section>
 
-     <!-- <section class="actions reveal delay-4">
+      <section class="actions reveal delay-4">
         <button class="primary-btn" onclick="copyAllAccess()">
-          Copiar datos de acceso
+          <span>Copiar todos los datos</span>
         </button>
-      </section>-->
+      </section>
+
+      <!-- <footer class="footer-note reveal delay-4"> -->
+        <!-- <span>WiFi de casa ✨</span> -->
+      <!-- </footer> -->
 
       <div id="toast" class="toast">Copiado correctamente</div>
     </section>
@@ -83,4 +117,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-<!-- deploy -->
