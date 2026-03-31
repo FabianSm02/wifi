@@ -12,7 +12,7 @@ function showToast(message) {
 }
 
 async function copyText(id, message = "Copiado correctamente") {
-  const text = document.getElementById(id).innerText;
+  const text = document.getElementById(id).innerText.trim();
 
   try {
     await navigator.clipboard.writeText(text);
@@ -44,7 +44,9 @@ function fallbackCopy(text, message) {
 }
 
 async function copyAllAccess() {
-  const accessText = "Red WiFi: D&F | Clave: dayafabi23";
+  const ssid = document.getElementById("ssid").innerText.trim();
+  const password = document.getElementById("password").innerText.trim();
+  const accessText = `Red WiFi: ${ssid} | Clave: ${password}`;
 
   try {
     await navigator.clipboard.writeText(accessText);
@@ -78,5 +80,20 @@ document.addEventListener("DOMContentLoaded", () => {
     reveals.forEach((item) => {
       item.style.animationPlayState = "running";
     });
+  });
+
+  const card = document.getElementById("mainCard");
+  const spotlight = card.querySelector(".card-spotlight");
+
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    spotlight.style.transform = `translate(${x - 160}px, ${y - 160}px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    spotlight.style.transform = "translate(-40px, -40px)";
   });
 });
