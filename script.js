@@ -81,19 +81,4 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.animationPlayState = "running";
     });
   });
-
-  const card = document.getElementById("mainCard");
-  const spotlight = card.querySelector(".card-spotlight");
-
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    spotlight.style.transform = `translate(${x - 160}px, ${y - 160}px)`;
-  });
-
-  card.addEventListener("mouseleave", () => {
-    spotlight.style.transform = "translate(-40px, -40px)";
-  });
 });
